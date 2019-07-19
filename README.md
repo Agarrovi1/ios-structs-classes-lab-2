@@ -13,6 +13,20 @@ struct Room {
 }
 ```
 
+```swift
+struct Room {
+let maxOccupancy: Int
+let length: Double
+let width: Double
+}
+
+var conferenceRoomOne = Room(maxOccupancy: 30, length: 50.0, width: 50.0)
+var conferenceRoomTwo = conferenceRoomOne
+conferenceRoomOne = Room(maxOccupancy: 20, length: 30.0, width: 30.0)
+print(conferenceRoomOne)
+print(conferenceRoomTwo)
+```
+
 ## Question 2
 
 Using the Bike class below, write code that demonstrates that it is a reference type.
@@ -22,6 +36,19 @@ class Bike {
     var wheelNumber = 2
     var hasBell = false
 }
+```
+
+```swift
+class Bike {
+var wheelNumber = 2
+var hasBell = false
+}
+
+var machBike = Bike()
+var acroBike = machBike
+machBike.hasBell = true
+print(machBike.hasBell)
+print(acroBike.hasBell)
 ```
 
 ## Question 3
@@ -35,6 +62,45 @@ class Animal {
         print("I am an animal named \(name)")
     }
 }
+```
+
+```swift
+class Animal {
+var name: String = ""
+var printDescription: Void {
+print("I am an animal named \(name)")
+}
+
+init(name: String) {
+self.name = name
+}
+}
+
+class Bird: Animal {
+var canFly: Bool
+
+init(name: String, canFly: Bool) {
+self.canFly = canFly
+super.init(name: name)
+}
+
+override var printDescription: Void {
+if canFly == true {
+print("I am bird named \(name) and I can fly")
+} else {
+print("I am bird named \(name) and I can't fly")
+}
+}
+}
+var flappyBird = Bird(name: "flappy", canFly: true)
+
+class Robin: Bird {
+override init(name: String, canFly: Bool) {
+super .init(name: "Robin", canFly: canFly)
+}
+}
+var bird = Robin(name: "a", canFly: true)
+print(bird.name)
 ```
 
 b. Override the printDescription method to have the instance of the Bird object print out its name and whether it can fly
